@@ -1,0 +1,60 @@
+.header {
+   display: block;
+   margin: 0 auto;
+   padding: 15px;
+   border-bottom: 1px solid rgba(234, 234, 56, 0.898);
+   position: relative;
+}
+.header_wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.logo {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 700; 
+    font-size: 25px;
+    padding: 10px;
+    
+ 
+}
+.header_bar {
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.header_search input {
+    outline: none;
+    /* border: none; */
+    margin: 0;
+    padding: 0 5px 0 5px;
+    width: 500px;
+    height: 100%;
+   
+    
+}
+.search_logo {
+    cursor: pointer;
+    
+    font-size: 14px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 20px;
+  
+}
+.header_author {
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(234, 234, 56, 0.898);
+    background-color: rgba(234, 234, 56, 0.898);
+    padding: 10px;
+}
