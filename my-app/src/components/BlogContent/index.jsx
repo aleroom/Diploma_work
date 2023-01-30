@@ -15,23 +15,27 @@ const BlogContent = () => {
             />
         )
     })
-    // const [click, setClick] = useState(true);
+    const [click, setClick] = useState(true);
 
-    // // const handleClick = () => {
-    //     setClick(false)
-    // }
+    const handleClick = () => {
+        setClick(!click);
+    }
     return (
         <>
-            {/* <button onClick={() => handleClick}>Скрыть блог</button> */}
-            
+           {
+           click ? 'Блог скрыт' : 'Блог показать'
+           }
+            <button onClick={handleClick}>Нажми на меня</button> 
+            {click ? 
               <>
                 <h1>SimpleBlog</h1>
                 <div className="posts">
                     {blogPosts}
                 </div>  
             </>  
-            
-        }
+            : null
+            }
+           
             
             
 
