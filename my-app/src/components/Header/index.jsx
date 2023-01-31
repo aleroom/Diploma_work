@@ -10,6 +10,12 @@ const Header = () => {
                 <div className={style.logo}>MyBlog</div>
                 <div className={style.header_bar}>
                     <FontAwesomeIcon icon={faBars} />
+                    {/* <ul>
+                        <li>Home</li>
+                        <li>All </li>
+                        <li>Favorite</li>
+                        <li></li>
+                    </ul> */}
                 </div>
                 <div className={style.header_search}>
                     <input 

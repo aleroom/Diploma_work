@@ -1,5 +1,5 @@
 import posts from "../common/projectData/index.jsx";
-import BlogCard from "./component/BlogCard/index.jsx";
+import BlogCard from "./BlogCard/index.jsx";
 import React, {useState} from "react";
 
 const BlogContent = () => { 
@@ -9,8 +9,9 @@ const BlogContent = () => {
             <BlogCard 
                 key={item.id}
                 title = {item.title}
+                img = {item.img}
                 description = {item.description}
-                pos={pos}
+                likeCount = {item.likeCount}
             
             />
         )
@@ -28,11 +29,11 @@ const BlogContent = () => {
             <button onClick={handleClick}>Нажми на меня</button> 
             {click ? 
               <>
-                <h1>SimpleBlog</h1>
+                <h1>Simple Blog</h1>
                 <div className="posts">
                     {blogPosts}
                 </div>  
-            </>  
+                </>  
             : null
             }
            
