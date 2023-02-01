@@ -4,7 +4,24 @@ import React, {useState} from "react";
 
 const BlogContent = () => { 
 
-    const blogPosts = posts.map ((item, pos) => {
+    const [click, setClick] = useState(true);
+    const [blogArr, setBlogArr] = useState(posts);
+    
+
+    const likePost = (pos) => { 
+        const temp = blogArr;
+        temp[pos].likeCount++;
+       
+        
+        // setBlogArr({
+        //     blogArr: temp
+        // })
+        setBlogArr(temp);
+       
+    }
+
+
+    const blogPosts = blogArr.map ((item, pos) => {
         return (
             <BlogCard 
                 key={item.id}
@@ -12,27 +29,32 @@ const BlogContent = () => {
                 img = {item.img}
                 description = {item.description}
                 likeCount = {item.likeCount}
+                likePost = {() => likePost(pos)}
+               
             
             />
         )
     })
-    const [click, setClick] = useState(true);
+  
+    
 
-    const handleClick = () => {
+    const handleClick = () => { //toggleBlog
         setClick(!click);
     }
+    console.log('1',blogPosts)
     return (
         <>
-           {
-           click ? 'Блог скрыт' : 'Блог показать'
+           
+            <button onClick={handleClick}>
+                {
+                    click ? 'Блог скрыть' : 'Блог показать'
            }
-            <button onClick={handleClick}>Нажми на меня</button> 
+            </button> 
             {click ? 
               <>
                 <h1>Simple Blog</h1>
-                <div className="posts">
-                    {blogPosts}
-                </div>  
+                <div className="posts"> {blogPosts} </div>        
+                 
                 </>  
             : null
             }
