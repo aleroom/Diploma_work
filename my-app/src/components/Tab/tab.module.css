@@ -1,0 +1,25 @@
+ul {
+    list-style: none;
+    display: flex;
+    border-bottom: 1px solid #9b9a9f;
+    margin: 0 15px;
+    padding: 0;
+  }
+  
+  li {
+    font-weight: 700;
+  }
+  li a {
+    line-height: 25px;
+  
+    display: block;
+    color: #313035;
+    text-decoration: none;
+    padding: 25px;
+  
+    border-bottom: 3px solid transparent;
+  }
+  
+  li a.active {
+    border-bottom: 3px solid #000 !important;
+  }

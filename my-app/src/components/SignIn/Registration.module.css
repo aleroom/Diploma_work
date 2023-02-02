@@ -1,0 +1,133 @@
+wrap {
+    width: 300px;
+    display: block;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid gray;
+  }
+  
+  /*  */
+  
+  .authFormContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 150px;
+  }
+  .title {
+    font-size: 50px;
+    margin: 0 auto 40px;
+  }
+  .wrap {
+    width: 500px;
+  }
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+  }
+  .registerForm {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    text-align: left;
+  }
+  
+  input {
+    margin: 12px 0 25px;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+  }
+  .input:last-child {
+    margin-bottom: 0px;
+  }
+  .linkbtn {
+    border: none;
+    background-color: rgb(36, 54, 167);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: auto;
+    width: 100%;
+  }
+  .linkbtn:hover {
+    transform: scale(1.1);
+  }
+  .linkbtnRegister {
+    text-decoration: underline;
+    border: none;
+    background-color: rgb(36, 54, 167);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 20px;
+  }
+  .linkbtnRegister:hover {
+    transform: scale(1.1);
+  }
+  .btn {
+    text-decoration: underline;
+    border: none;
+    background-color: transparent;
+    padding: 20px;
+    cursor: pointer;
+    color: #7439db;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    transform: scale(1.1);
+  }
+  .btnTurnBack {
+    text-decoration: underline;
+    border: 1px solid rgb(36, 54, 167);
+    background-color: transparent;
+    padding: 16px;
+    cursor: pointer;
+    color: black;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+  }
+  .btnTurnBack:hover {
+    transform: scale(1.1);
+  }
+  .Wrapparagraph {
+    width: 100%;
+  }
+  .paragraph {
+    width: 100%;
+    font-size: 30px;
+    display: block;
+    margin: 15px auto 30px;
+  }
+  .Homebtn {
+    border: none;
+    background-color: rgb(36, 54, 167);
+    padding: 20px;
+    cursor: pointer;
+    color: white;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 90%;
+  }
+  .Homebtn:hover {
+    transform: scale(1.1);
+  }

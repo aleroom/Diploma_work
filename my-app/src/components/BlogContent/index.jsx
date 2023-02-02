@@ -37,6 +37,30 @@ const BlogContent = () => {
             />
         )
     })
+
+    // const likePost = pos => { 
+    //     const temp = blogArr;
+    //     temp[pos].likeCount++;
+        
+    //     setBlogArr({
+    //         blogArr: temp
+    //     })
+    // }
+
+// const blogPosts = blogArr.map ((item, pos) => {
+//         return (
+//             <BlogCard 
+//                 key={item.id}
+//                 title = {item.title}
+//                 img = {item.img}
+//                 description = {item.description}
+//                 likeCount = {item.likeCount}
+//                 likePost = {() => likePost(pos)}
+               
+            
+//             />
+//         )
+//     })
   
     
     const handleClick = () => { //toggleBlog
