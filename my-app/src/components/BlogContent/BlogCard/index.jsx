@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "./BlogCard.module.css";
+import  style from"../BlogCard/BlogCard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
@@ -9,10 +9,10 @@ const heartFill = liked ? 'red' : 'black'
  
 
     return (
-        <div className="post">
-            <div className="post_wrap">
+        <div className={style.post}>
+            <div className={style.post_wrap}>
                 <h2>{title}</h2>
-                <div className="post_img">
+                <div className={style.post_img}>
                     <img src={img} alt="" />
                 </div>
                 <p>{description}</p>

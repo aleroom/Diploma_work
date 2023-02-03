@@ -78,7 +78,9 @@ const BlogContent = () => {
             {click ? 
               <>
                 <h1>Simple Blog</h1>
-                <div className="posts"> {blogPosts} </div>        
+                <div className="posts"> 
+                    {blogPosts} 
+                </div>        
                  
                 </>  
             : null
