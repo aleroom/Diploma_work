@@ -1,28 +1,43 @@
 // import { useState } from "react";
 import  style from"../BlogCard/BlogCard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartCrack, faBookmark } from '@fortawesome/free-solid-svg-icons'
 
-const BlogCard = ({title, description, img, liked, likePost }) => {
+const BlogCard = ({title, description, img, likeCount, likePost }) => {
 
-const heartFill = liked ? 'red' : 'black'
+// const heartFill = liked ? 'red' : 'black'
  
 
     return (
         <div className={style.post}>
             <div className={style.post_wrap}>
-                <h2>{title}</h2>
                 <div className={style.post_img}>
                     <img src={img} alt="" />
                 </div>
+                <h2>{title}</h2>
                 <p>{description}</p>
-                <div>
-                    <button onClick={likePost}>
-                        <FontAwesomeIcon icon={faHeart} style={{fill: heartFill}} />
-                    </button>
+                  
+
+                <div className={style.post_footer}>
+                    <div className={style.likePost}>
+                        <button onClick={() => likePost}>
+                            <FontAwesomeIcon icon={faHeart} />
+                        </button>
                     
-                    {/* {likeCount} */}
-                </div>    
+                        {likeCount}
+                    
+                        <button >
+                            <FontAwesomeIcon icon={faHeartCrack} />
+                        </button>
+                    </div>
+                    
+                    <div className={style.savePost}>
+                        <button >
+                            <FontAwesomeIcon icon={faBookmark} />
+                        </button>
+                    </div>
+                        
+                </div>  
             </div>
         </div>
     );

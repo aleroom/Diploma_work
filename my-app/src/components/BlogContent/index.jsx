@@ -1,6 +1,8 @@
 import posts from "../common/projectData/index.jsx";
 import BlogCard from "./BlogCard/index.jsx";
 import React, {useState} from "react";
+import style from "./blogContent.module.css"
+// simport BlogMenu from "./BlogMenu/index";
 
 const BlogContent = () => { 
 
@@ -8,35 +10,51 @@ const BlogContent = () => {
     const [blogArr, setBlogArr] = useState(posts);
     
 
-    const likePost = (pos) => { 
-        const temp = [...blogArr];
-        temp[pos].liked = !temp[pos].liked;
+    // const likePost = (pos) => { 
+    //     const temp = [...blogArr];
+    //     temp[pos].liked = !temp[pos].liked;
        
+    //     `                   
         
-        // setBlogArr({
-        //     blogArr: temp
-        // })
+    //     `
+    //     // setBlogArr({
+    //     //     blogArr: temp
+    //     // })
 
-        setBlogArr(blogArr);
+    //     setBlogArr(blogArr);
        
-        localStorage.setItem('blogPosts', JSON.stringify(temp))
-    }
+    //     localStorage.setItem('blogPosts', JSON.stringify(temp))
+    // }
 
 
-    const blogPosts = blogArr.map ((item, pos) => {
-        return (
-            <BlogCard 
-                key={item.id}
-                title = {item.title}
-                img = {item.img}
-                description = {item.description}
-                liked = {item.liked}
-                likePost = {() => likePost(pos)}
+    // const blogPosts = blogArr.map ((item, pos) => {
+    //     return (
+    //         <BlogCard 
+    //             key={item.id}
+    //             title = {item.title}
+    //             img = {item.img}
+    //             description = {item.description}
+    //             liked = {item.liked}
+    //             likePost = {() => likePost(pos)}
                
             
-            />
-        )
-    })
+    //         />
+    //     )
+    // })
+
+
+    // код максима
+    const likePost = id => {     
+        setBlogArr(blogArr.map(item => {
+          if(item.id == (id)) {
+            console.log(item);
+            return ({...item, likeCount: item.likeCount + 1})
+          }else{
+            return({...item})
+          }
+        }))
+    }
+
 
     // const likePost = pos => { 
     //     const temp = blogArr;
@@ -47,20 +65,20 @@ const BlogContent = () => {
     //     })
     // }
 
-// const blogPosts = blogArr.map ((item, pos) => {
-//         return (
-//             <BlogCard 
-//                 key={item.id}
-//                 title = {item.title}
-//                 img = {item.img}
-//                 description = {item.description}
-//                 likeCount = {item.likeCount}
-//                 likePost = {() => likePost(pos)}
+const blogPosts = blogArr.map ((props, id) => {
+        return (
+            <BlogCard 
+                key={props.id}
+                title = {props.title}
+                img = {props.img}
+                description = {props.description}
+                likeCount = {props.likeCount}
+                likePost = {() => likePost(id)}
                
             
-//             />
-//         )
-//     })
+            />
+        )
+    })
   
     
     const handleClick = () => { //toggleBlog
@@ -69,7 +87,7 @@ const BlogContent = () => {
     
     return (
         <>
-           
+            {/* <div className={style.postMenu}>{BlogMenu}</div> */}
             <button onClick={handleClick}>
                 {
                     click ? 'Блог скрыть' : 'Блог показать'
@@ -78,7 +96,7 @@ const BlogContent = () => {
             {click ? 
               <>
                 <h1>Simple Blog</h1>
-                <div className="posts"> 
+                <div className={style.posts}> 
                     {blogPosts} 
                 </div>        
                  

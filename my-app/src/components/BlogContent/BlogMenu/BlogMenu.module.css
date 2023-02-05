@@ -1,0 +1,13 @@
+.menuContainer {
+    display: flex;
+}
+
+.menuArticles {
+    display: flex;
+    justify-content: left;
+}
+
+.menuNews {
+    display: flex;
+    justify-content: left;
+}

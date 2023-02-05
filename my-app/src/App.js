@@ -30,7 +30,7 @@ function App() {
       <ThemeContext.Provider value={{ isNight, ToggleDarkMode }}>
         {/* <div className={isNight ? `Container-dark` : `Container-light`}> */}
           <Header/>
-
+          
           <main>
             <BlogContent />
           </main>
