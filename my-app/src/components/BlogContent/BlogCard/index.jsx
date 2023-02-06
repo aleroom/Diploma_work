@@ -3,7 +3,7 @@ import  style from"../BlogCard/BlogCard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartCrack, faBookmark } from '@fortawesome/free-solid-svg-icons'
 
-const BlogCard = ({title, description, img, likeCount, likePost }) => {
+const BlogCard = ({title, description, img, likeCount, likePost, key, desLikePost, desLikeCount }) => {
 
 // const heartFill = liked ? 'red' : 'black'
  
@@ -20,15 +20,18 @@ const BlogCard = ({title, description, img, likeCount, likePost }) => {
 
                 <div className={style.post_footer}>
                     <div className={style.likePost}>
-                        <button onClick={() => likePost}>
-                            <FontAwesomeIcon icon={faHeart} />
+                        <button onClick={() => likePost(key)}>
+                            <FontAwesomeIcon icon={faHeart}  />
+                            
                         </button>
                     
                         {likeCount}
                     
-                        <button >
+                        <button onClick={() => desLikePost(key)}>
                             <FontAwesomeIcon icon={faHeartCrack} />
                         </button>
+                        
+                        {desLikeCount}
                     </div>
                     
                     <div className={style.savePost}>

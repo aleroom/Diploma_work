@@ -27,9 +27,15 @@ const Header = () => {
                 
                 
                 </div>
+                
                 <div className={style.search_logo}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </div>
+
+                <div>
+                    <button>Favorites</button>
+                </div>
+
                 <div className={style.header_author}>SignIn</div>
             </div>
 

@@ -6,6 +6,7 @@ const posts = [
       description: "Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       img: "https://images.pexels.com/photos/4344514/pexels-photo-4344514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       likeCount: 0,
+      desLikeCount: 0,
       // liked: false
 
     },
@@ -15,6 +16,7 @@ const posts = [
       description: "Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
       img: "https://images.pexels.com/photos/1095780/pexels-photo-1095780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       likeCount: 0,
+      desLikeCount: 0,
       // liked: true
     },
     {
@@ -23,6 +25,7 @@ const posts = [
       description: "Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       img: "https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       likeCount: 0,
+      desLikeCount: 0,
       // liked: false
     },
     {
@@ -31,7 +34,27 @@ const posts = [
       description: "Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
       img: "https://images.pexels.com/photos/1095780/pexels-photo-1095780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       likeCount: 0,
+      desLikeCount: 0,
       // liked: true
+    },
+    {
+      id: 5,
+      title: "Post 5",
+      description: "Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      img: "https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      likeCount: 0,
+      desLikeCount: 0,
+      // liked: false
+    },
+    {
+      id: 6,
+      title: "Post 6",
+      description: "Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      img: "https://images.pexels.com/photos/4344514/pexels-photo-4344514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      likeCount: 0,
+      desLikeCount: 0,
+      // liked: false
+
     },
   ]
 

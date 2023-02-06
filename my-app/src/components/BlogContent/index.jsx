@@ -7,73 +7,44 @@ import style from "./blogContent.module.css"
 const BlogContent = () => { 
 
     const [click, setClick] = useState(true);
-    const [blogArr, setBlogArr] = useState(posts);
+    const [blogArr, setBlogArr] = useState(posts);  //массив для likePost
+    const [desLike, setDesLike] = useState (posts)
     
 
-    // const likePost = (pos) => { 
-    //     const temp = [...blogArr];
-    //     temp[pos].liked = !temp[pos].liked;
-       
-    //     `                   
-        
-    //     `
-    //     // setBlogArr({
-    //     //     blogArr: temp
-    //     // })
 
-    //     setBlogArr(blogArr);
-       
-    //     localStorage.setItem('blogPosts', JSON.stringify(temp))
-    // }
-
-
-    // const blogPosts = blogArr.map ((item, pos) => {
-    //     return (
-    //         <BlogCard 
-    //             key={item.id}
-    //             title = {item.title}
-    //             img = {item.img}
-    //             description = {item.description}
-    //             liked = {item.liked}
-    //             likePost = {() => likePost(pos)}
-               
-            
-    //         />
-    //     )
-    // })
-
-
-    // код максима
-    const likePost = id => {     
+    const likePost = id => { 
         setBlogArr(blogArr.map(item => {
-          if(item.id == (id)) {
-            console.log(item);
-            return ({...item, likeCount: item.likeCount + 1})
-          }else{
-            return({...item})
-          }
-        }))
+            if(item.id == id) {
+              console.log(item);
+              return ({...item, likeCount: item.likeCount + 1})
+            }else{
+              return({...item})
+            }
+          }))
     }
+    const desLikePost = id => { 
+        setDesLike(desLike.map(item => {
+            if(item.id == id) {
+              console.log(item);
+              return ({...item, desLikeCount: item.desLikeCount + 1})
+            }else{
+              return({...item})
+            }
+          }))
+    }
+    
 
-
-    // const likePost = pos => { 
-    //     const temp = blogArr;
-    //     temp[pos].likeCount++;
-        
-    //     setBlogArr({
-    //         blogArr: temp
-    //     })
-    // }
-
-const blogPosts = blogArr.map ((props, id) => {
+const blogPosts = blogArr.map ((item) => {
         return (
             <BlogCard 
-                key={props.id}
-                title = {props.title}
-                img = {props.img}
-                description = {props.description}
-                likeCount = {props.likeCount}
-                likePost = {() => likePost(id)}
+                key={item.id}
+                title = {item.title}
+                img = {item.img}
+                description = {item.description}
+                likeCount = {item.likeCount}
+                desLikeCount = {item.desLikeCount}
+                likePost = {() => likePost(item.id)}
+                desLikePost = {() => desLikePost(item.id)}
                
             
             />
