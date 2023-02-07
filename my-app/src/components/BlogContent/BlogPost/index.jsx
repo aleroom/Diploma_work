@@ -1,9 +1,8 @@
-// import { useState } from "react";
 import  style from"../BlogCard/BlogCard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartCrack, faBookmark } from '@fortawesome/free-solid-svg-icons'
 
-const BlogCard = ({title, description, img, likeCount, likePost, key, desLikePost, desLikeCount }) => {
+const BlogPost = ({title, description, img, likeCount, likePost, key, desLikePost, desLikeCount }) => {
 
 
  
@@ -46,4 +45,4 @@ const BlogCard = ({title, description, img, likeCount, likePost, key, desLikePos
     );
 };
   
-export default BlogCard;
+export default BlogPost;

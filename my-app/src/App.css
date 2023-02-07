@@ -1,9 +1,10 @@
-.App {
+.container {
   text-align: center;
   max-width: 1170px;
   margin: 0 auto;
   padding: 0 15px;
 }
+
 
 .App-logo {
   height: 40vmin;
