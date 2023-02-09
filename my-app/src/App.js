@@ -1,11 +1,13 @@
 import './App.css';
-import React, { useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import Header from './components/Header';
 import BlogContent from './components/BlogContent';
 import Footer from './components/Footer';
 import BlogMenu from './components/BlogContent/BlogMenu';
-// import { useDispatch } from "react-redux";
-// import { fetchPostById } from "./appSlices/index.js";
+import { useDispatch } from "react-redux";
+import { fetchPostById } from "./appSlices/index.js";
+import { useSelector } from 'react-redux';
+import { store } from './store';
 
 
 
@@ -42,6 +44,8 @@ function ThemeButton() {
 }
 
 function App() {
+
+  const dispatch = useDispatch()
   const [currentTheme, setCurrentTheme] = useState((prev) => prev == "light" ? "dark" : "light");
   
   function toggleCurrentTheme() {
@@ -49,7 +53,9 @@ function App() {
   }
  
  
-
+useEffect( ()=> {
+   dispatch(fetchPostById())
+}, [])
   return (
     
     <div className='App'>

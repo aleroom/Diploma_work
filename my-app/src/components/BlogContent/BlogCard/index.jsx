@@ -24,7 +24,7 @@ const BlogCard = ({title, description, img, likeCount, likePost, key, desLikePos
                             <FontAwesomeIcon icon={faHeart}  />
                             
                         </button>
-                                
+                               {likeCount} 
                         <button onClick={() => desLikePost(key)}>
                             <FontAwesomeIcon icon={faHeartCrack} />
                         </button>

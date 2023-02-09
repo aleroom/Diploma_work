@@ -24,13 +24,13 @@ const BlogPost = ({title, description, img, likeCount, likePost, key, desLikePos
                             
                         </button>
                     
-                        {likeCount}
+                       
                     
                         <button onClick={() => desLikePost(key)}>
                             <FontAwesomeIcon icon={faHeartCrack} />
                         </button>
                         
-                        {desLikeCount}
+                        
                     </div>
                     
                     <div className={style.savePost}>

@@ -23,9 +23,9 @@ export const fetchPostById = createAsyncThunk(
       }
 
       const json = await response.json();
-      // json.map(item => {
-      //   item.dislikes = 0
-      // })
+      json.map(item => {
+        item.dislikes = 0
+      })
       return json;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -65,18 +65,18 @@ const initialState = {
   tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
   posts: [],
   theme: 'light',
-  Favourite: [],
+  favorites: [],
 };
 
-export const themeSlice = createSlice({
-  name: "theme",
-  initialState,
-  reducers: {
-    swichTheme: (state) => {
-      state.theme === 'light' ? state.theme = 'dark' : state.theme = 'light'
-    }
-  }
-});
+// export const themeSlice = createSlice({
+//   name: "theme",
+//   initialState,
+//   reducers: {
+//     swichTheme: (state) => {
+//       state.theme === 'light' ? state.theme = 'dark' : state.theme = 'light'
+//     }
+//   }
+// });
 
 const postsSlice = createSlice({
   name: "posts",
@@ -89,6 +89,7 @@ const postsSlice = createSlice({
       })
     },
     setLikes:(state, action) => {
+     
       state.posts.map(item => {
         if(item.id == action.payload) {
           return ({...item, likes: item.likes++})
@@ -99,6 +100,7 @@ const postsSlice = createSlice({
       )
     },
     setDislikes: (state, action) => {
+      
       state.posts.map(item => {
         if(item.id == action.payload) {
           return ({...item, likes: item.dislikes++})
@@ -109,12 +111,12 @@ const postsSlice = createSlice({
       )
     },
 
-    addFavourite: (state, action) => {
+    addFavorites: (state, action) => {
       const post = action.payload;
-      state.Favourite = [...state.Favourite, post];
+      state.favorites = [...state.favorites, post];
     },
-    delitemarksFavourite: (state, action) => {
-      state.Favourite = state.Favourite.filter(
+    delitemarksFavorites: (state, action) => {
+      state.favorites = state.favorites.filter(
         (item) => item.id !== action.payload
       );
     },
@@ -151,10 +153,8 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setPosts, addFavourite, delitemarksFavourite, setLikes, setDislikes } =
+export const { setPosts, addFavorites, delitemarksFavorites, setLikes, setDislikes } =
   postsSlice.actions;
-
-export const { swichTheme } = themeSlice.actions;
 
 
 export default postsSlice.reducer;
