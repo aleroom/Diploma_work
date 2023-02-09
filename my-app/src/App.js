@@ -1,5 +1,5 @@
 import './App.css';
-import React, { createContext, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from './components/Header';
 import BlogContent from './components/BlogContent';
 import Footer from './components/Footer';

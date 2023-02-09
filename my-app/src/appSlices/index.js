@@ -23,6 +23,9 @@ export const fetchPostById = createAsyncThunk(
       }
 
       const json = await response.json();
+      // json.map(item => {
+      //   item.dislikes = 0
+      // })
       return json;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -61,8 +64,19 @@ export const login = createAsyncThunk(
 const initialState = {
   tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
   posts: [],
+  theme: 'light',
   Favourite: [],
 };
+
+export const themeSlice = createSlice({
+  name: "theme",
+  initialState,
+  reducers: {
+    swichTheme: (state) => {
+      state.theme === 'light' ? state.theme = 'dark' : state.theme = 'light'
+    }
+  }
+});
 
 const postsSlice = createSlice({
   name: "posts",
@@ -70,7 +84,31 @@ const postsSlice = createSlice({
   reducers: {
     setPosts: (state, action) => {
       state.posts = action.payload;
+      state.posts.map (item => {
+        return ({...item, dislikes: 0})
+      })
     },
+    setLikes:(state, action) => {
+      state.posts.map(item => {
+        if(item.id == action.payload) {
+          return ({...item, likes: item.likes++})
+        }else{
+          return({...item})
+        }
+      }
+      )
+    },
+    setDislikes: (state, action) => {
+      state.posts.map(item => {
+        if(item.id == action.payload) {
+          return ({...item, likes: item.dislikes++})
+        }else{
+          return({...item})
+        }
+      }
+      )
+    },
+
     addFavourite: (state, action) => {
       const post = action.payload;
       state.Favourite = [...state.Favourite, post];
@@ -83,15 +121,12 @@ const postsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPostById.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.posts = action.payload;
     });
     builder.addCase(fetchPostById.pending, (state, action) => {
-      console.log("PENDING");
       state.posts = [];
     });
     builder.addCase(fetchPostById.rejected, (state, action) => {
-      console.log("ERROR 11");
       state.posts = "Error";
     });
   },
@@ -105,22 +140,22 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      // console.log(action.payload);
       state.user = action.payload;
     });
     builder.addCase(login.pending, (state, action) => {
-      // console.log("PENDING");
       state.user = "Loading...";
     });
     builder.addCase(login.rejected, (state, action) => {
-      console.log("ERROR 11");
       state.user = "Error";
     });
   },
 });
 
-export const { setPosts, addFavourite, delitemarksFavourite } =
+export const { setPosts, addFavourite, delitemarksFavourite, setLikes, setDislikes } =
   postsSlice.actions;
+
+export const { swichTheme } = themeSlice.actions;
+
 
 export default postsSlice.reducer;
 
