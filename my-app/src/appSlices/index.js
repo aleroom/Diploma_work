@@ -9,13 +9,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //   return response;
 // });
 
-export const fetchPostById = createAsyncThunk(
+export const fetchPostById = createAsyncThunk( //грубо говоря функция асинхронные функции обрабатывает
   "posts/PostId", // имя
-  async (postId, thunkAPI) => {
-    //функция котрая делает запрос
+  async (postId, thunkAPI) => {//функция котрая делает запрос к API, она всегда asinc
+
     try {
-      const response = await fetch(
-        `https://63a9cc18594f75dc1dc0ae77.mockapi.io/api/b1/posts`
+      const response = await fetch( //fetch это промис который мы раскрывам then-ом, а мы раскрываем await-ом
+        // `https://63a9cc18594f75dc1dc0ae77.mockapi.io/api/b1/posts`
+        // `https://jsonplaceholder.typicode.com/posts/1`
+        `https://63e68a0483c0e85a8695e64d.mockapi.io/name`
       );
 
       if (!response.ok) {
@@ -62,10 +64,11 @@ export const login = createAsyncThunk(
 );
 
 const initialState = {
-  tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
+  // tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
   posts: [],
   theme: 'light',
-  favorites: [],
+  favorite: [],
+  value: 0
 };
 
 // export const themeSlice = createSlice({
@@ -89,10 +92,9 @@ const postsSlice = createSlice({
       })
     },
     setLikes:(state, action) => {
-     
       state.posts.map(item => {
         if(item.id == action.payload) {
-          return ({...item, likes: item.likes++})
+          return ({...item, liked: item.likeCount++})
         }else{
           return({...item})
         }
@@ -100,10 +102,9 @@ const postsSlice = createSlice({
       )
     },
     setDislikes: (state, action) => {
-      
       state.posts.map(item => {
         if(item.id == action.payload) {
-          return ({...item, likes: item.dislikes++})
+          return ({...item, likeCount: item.disLikeCount++})
         }else{
           return({...item})
         }
@@ -111,12 +112,12 @@ const postsSlice = createSlice({
       )
     },
 
-    addFavorites: (state, action) => {
+    addFavorite: (state, action) => {
       const post = action.payload;
-      state.favorites = [...state.favorites, post];
+      state.favorite = [...state.favorite, post];
     },
-    delitemarksFavorites: (state, action) => {
-      state.favorites = state.favorites.filter(
+    delitemarksFavorite: (state, action) => {
+      state.favorite = state.favorite.filter(
         (item) => item.id !== action.payload
       );
     },
@@ -153,7 +154,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setPosts, addFavorites, delitemarksFavorites, setLikes, setDislikes } =
+export const { setPosts, addFavorite, delitemarksFavorites, setLikes, setDislikes, increment, decrement } =
   postsSlice.actions;
 
 

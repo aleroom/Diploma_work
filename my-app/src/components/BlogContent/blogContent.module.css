@@ -1,6 +1,14 @@
-.posts {
+.postsWrap {
     display: flex;
-    width: 100%;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin-top: 20px;
+    width: 28%;
 }
+.posts {
+    margin: 0;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+}
+
