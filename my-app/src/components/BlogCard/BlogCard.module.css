@@ -29,9 +29,12 @@
 }
 .post_img img:hover {
     transform: scale(1.05);
-    
-    
-    
+ 
+}
+.data {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: left;
 }
 h2 {
     text-align: left;

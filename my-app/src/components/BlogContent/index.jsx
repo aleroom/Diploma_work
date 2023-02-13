@@ -24,7 +24,7 @@ const BlogContent = () => {
                 ))
             ) : (
                 <span className={style.pending}>Wait</span>
-            )};
+            )}
       
         </div>
     )

@@ -1,25 +1,32 @@
 import style from "./BlogMenu.module.css";
+
 // import { ThemeContext } from "../../../App.js";
-// import { useContext } from "react";
+import { useSelector } from "react-redux/es/exports";
+import { NavLink } from "react-router-dom";
+
 
 const BlogMenu = () => {
-    
-   
-    
-
+    const menu = useSelector((state) => state.rootReducer.postsReducer.menu);
     return (
         <div className={style.menuContainer}>
             <div className={style.menuNav}>  
+                
                 <div className={style.menuArticles}>
-                    <button>Articles</button>
+                    <NavLink to="/" className={({isActive}) => (isActive ? style.active : "")}>
+                        {menu.articles}
+                    </NavLink>
                 </div>
-
+                
                 <div className={style.menuNews}>
-                    <button>News</button>
+                    <NavLink to="/news" className={({isActive}) => (isActive ? style.active : "")}>
+                        {menu.news}
+                    </NavLink>    
                 </div>
 
                 <div className={style.menuFav}>
-                    <button>Favorites</button>
+                <NavLink to="/favorites" className={({isActive}) => (isActive ? style.active : "")}>
+                        {menu.myFavorites}
+                </NavLink>    
                 </div>
             </div>  
 

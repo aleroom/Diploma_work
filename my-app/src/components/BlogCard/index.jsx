@@ -14,6 +14,7 @@ const BlogCard = ({post}) => {
                 <div className={style.post_img}>
                     <img src={post.image} alt="" />
                 </div>
+                <div className={style.data}>{post.data}</div>
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
                   

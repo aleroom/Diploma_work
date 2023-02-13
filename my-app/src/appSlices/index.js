@@ -26,7 +26,7 @@ export const fetchPostById = createAsyncThunk( //грубо говоря фун�
 
       const json = await response.json();
       json.map(item => {
-        item.dislikes = 0
+        // item.dislikes = 0
       })
       return json;
     } catch (error) {
@@ -64,7 +64,7 @@ export const login = createAsyncThunk(
 );
 
 const initialState = {
-  // tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
+  menu: { articles: "Articles", news: "News", myFavorites: "My Favorites" },
   posts: [],
   theme: 'light',
   favorite: [],
