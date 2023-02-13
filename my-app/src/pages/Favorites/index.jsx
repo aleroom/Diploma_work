@@ -4,15 +4,15 @@ import BlogCard from "../../components/BlogCard";
 import { useSelector } from "react-redux";
 
 function Favorites() {
-  const favorite = useSelector(
-    (state) => state?.rootReducer?.postsReducer.favorite
+  const favorite = useSelector((state) => state?.rootReducer?.postsReducer.favorite
   );
 
   return (
     <section>
-      {favorite.map((favorite) => (
+      {favorite.map((item) => (
         <div key={favorite.id}>
-          <BlogCard fav={favorite} />
+          <BlogCard post={item} />
+          
         </div>
       ))}
     </section>

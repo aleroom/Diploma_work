@@ -112,10 +112,16 @@ const postsSlice = createSlice({
       )
     },
 
-    addFavorite: (state, action) => {
-      const post = action.payload;
-      state.favorite = [...state.favorite, post];
+    addFavorite: (state, { payload }) => {
+      const { id, title, image, likes } = payload
+      state.favorite = [...state.favorite, { id, title, image, likes }]
     },
+
+
+    // addFavorite: (state, action) => {
+    //   const post = action.payload;
+    //   state.favorite = [...state.favorite, post];
+    // },
     delitemarksFavorite: (state, action) => {
       state.favorite = state.favorite.filter(
         (item) => item.id !== action.payload

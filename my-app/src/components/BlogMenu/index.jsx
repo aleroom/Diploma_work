@@ -2,7 +2,7 @@ import style from "./BlogMenu.module.css";
 
 // import { ThemeContext } from "../../../App.js";
 import { useSelector } from "react-redux/es/exports";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 
 const BlogMenu = () => {
@@ -12,21 +12,21 @@ const BlogMenu = () => {
             <div className={style.menuNav}>  
                 
                 <div className={style.menuArticles}>
-                    <NavLink to="/" className={({isActive}) => (isActive ? style.active : "")}>
+                    {/* <NavLink to="/" className={({isActive}) => (isActive ? style.active : "")}> */}
                         {menu.articles}
-                    </NavLink>
+                    {/* </NavLink> */}
                 </div>
                 
                 <div className={style.menuNews}>
-                    <NavLink to="/news" className={({isActive}) => (isActive ? style.active : "")}>
+                    {/* <NavLink to="/news" className={({isActive}) => (isActive ? style.active : "")}> */}
                         {menu.news}
-                    </NavLink>    
+                    {/* </NavLink>     */}
                 </div>
 
                 <div className={style.menuFav}>
-                <NavLink to="/favorites" className={({isActive}) => (isActive ? style.active : "")}>
+                {/* <NavLink to="/favorites" className={({isActive}) => (isActive ? style.active : "")}> */}
                         {menu.myFavorites}
-                </NavLink>    
+                {/* </NavLink>     */}
                 </div>
             </div>  
 
