@@ -32,14 +32,14 @@ const BlogCard = ({post}) => {
                         
                                {post.likeCount} 
                               
-                        <button  onClick={() => dispatch(setDislikes(post.id))}>
+                        <button onClick={() => dispatch(setDislikes(post.id))}>
                             <FontAwesomeIcon icon={faHeartCrack} />
                         </button>
                                 {post.disLikeCount} 
                     </div>
                     
                     <div className={style.savePost}>
-                        <button onClick={() => dispatch(addFavorite(post.id))}>
+                        <button onClick={() => dispatch(addFavorite(post))}>
                         
                             <FontAwesomeIcon icon={faBookmark} />
                             

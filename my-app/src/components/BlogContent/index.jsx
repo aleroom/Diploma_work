@@ -14,11 +14,9 @@ const BlogContent = () => {
         
         <div className={style.postsWrap}>
             {posts.length ? (
-                posts.map((posts) => (
-                <div className={style.posts}>
+                posts.map((posts, index) => (
+                <div className={style.posts} key={index} >
                     <BlogCard post={posts} />
-                    
-                    
                 </div>
                 
                 ))

@@ -64,7 +64,7 @@ export const login = createAsyncThunk(
 );
 
 const initialState = {
-  menu: { articles: "Articles", news: "News", myFavorites: "My Favorites" },
+  menu: { articles: "Articles", news: "News", favorites: "Favorites" },
   posts: [],
   theme: 'light',
   favorite: [],
@@ -108,13 +108,12 @@ const postsSlice = createSlice({
         }else{
           return({...item})
         }
-      }
-      )
+      })
     },
 
-    addFavorite: (state, { payload }) => {
-      const { id, title, image, likes } = payload
-      state.favorite = [...state.favorite, { id, title, image, likes }]
+    addFavorite: (state, action) => {
+      state.favorite.push(action.payload)
+      
     },
 
 

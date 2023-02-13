@@ -1,5 +1,7 @@
 .menuContainer {
     display: flex;
+    max-width: 1170px;
+    margin: 0 auto;
     justify-content: space-between;
     padding: 15px;
     border-bottom: 2px solid  rgba(234, 234, 56, 0.898);
@@ -7,9 +9,10 @@
 .menuNav {
     display: flex;
     justify-content: left;
+    
 }
 
-.menuArticles button, .menuFav button, .menuNews button {
+.menuArticles, .menuFav, .menuNews {
     display: flex;
     justify-content: left;
     font-size: 17px;
@@ -17,5 +20,11 @@
     border: 1px solid rgb(219, 219, 219);
     border-radius: 10px;
     padding: 5px 10px;
+}
+
+.menuArticles a, .menuFav a, .menuNews a {
+    color: black;
+    text-decoration: none;
+    
 }
 

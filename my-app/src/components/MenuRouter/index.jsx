@@ -1,18 +1,18 @@
-import { Route, Routes } from "react-router";
+// import { Route, Routes } from "react-router-dom";
 
-import Articles from "../Articles";
-import News from "../News";
-import Favorites from "../../pages/Favorites";
+// import Articles from "../../pages/Articles"
+// import News from "../../pages/News";
+// import Favorites from "../../pages/Favorites";
 
-function MenuRouter() {
-    return(
-        <Routes>
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/news" element={<News />} /> 
-            <Route path="/favorites" element={<Favorites />} />
-    </Routes> 
-    )
-}
+// function MenuRouter() {
+//     return(
+//         <Routes>
+//             <Route path="/articles" element={<Articles />} />
+//             <Route path="/news" element={<News />} /> 
+//             <Route path="/favorites" element={<Favorites />} />
+//         </Routes> 
+//     )
+// }
 
 
-export default MenuRouter;
+// export default MenuRouter;

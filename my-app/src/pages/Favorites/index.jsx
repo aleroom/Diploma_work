@@ -1,21 +1,23 @@
 import BlogCard from "../../components/BlogCard";
-// import style from "./favorites.module.css";
+import style from './favorite.module.css';
+import '../../App.css';
 
 import { useSelector } from "react-redux";
+import Layout from "../../components/Layout";
 
 function Favorites() {
-  const favorite = useSelector((state) => state?.rootReducer?.postsReducer.favorite
-  );
+  const favorite = useSelector((state) => state?.rootReducer?.postsReducer.favorite);
 
   return (
-    <section>
+    <Layout>
+      <div className={style.favWrap}>
       {favorite.map((item) => (
-        <div key={favorite.id}>
+        <div className={style.favoritePosts}>
           <BlogCard post={item} />
-          
         </div>
       ))}
-    </section>
+      </div>
+    </Layout>
   );
 }
 

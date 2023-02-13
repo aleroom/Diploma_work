@@ -1,0 +1,20 @@
+.favWrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 20px auto 0;
+  width: 100%;
+  max-width: 1170px;
+  }
+
+
+.favoritePosts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 30%;
+    margin-top: 20px;
+    
+}
