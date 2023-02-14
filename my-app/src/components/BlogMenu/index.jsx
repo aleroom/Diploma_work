@@ -1,8 +1,8 @@
 import style from "./BlogMenu.module.css";
 
 // import { ThemeContext } from "../../../App.js";
-import { useSelector } from "react-redux/es/exports";
-import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 
 const BlogMenu = () => {

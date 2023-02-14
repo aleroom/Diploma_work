@@ -1,0 +1,19 @@
+.postWrap {
+    text-align: center;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.navPost{
+    display: flex;
+    justify-content: space-between;
+}
+  /* .post__description {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  .post__description.active {
+    color: aliceblue;
+  }
+  .post__info {
+  } */

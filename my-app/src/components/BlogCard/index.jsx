@@ -1,18 +1,16 @@
-// import { useState } from "react";
-import { useEffect } from "react";
-
 import  style from  "../BlogCard/BlogCard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartCrack, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from "react-redux";
 import { setLikes, setDislikes, addFavorite } from "../../appSlices";
+import { NavLink } from "react-router-dom";
 
 
 
 
 const BlogCard = ({post}) => {
     const dispatch = useDispatch();
-
+    
     return (
         <div className={style.post}>
             <div className={style.post_wrap}>
@@ -20,7 +18,7 @@ const BlogCard = ({post}) => {
                     <img src={post.image} alt="" />
                 </div>
                 <div className={style.data}>{post.data}</div>
-                <h2>{post.title}</h2>
+                <h2><NavLink to={`post/${post.id}`}>{post.title}</NavLink></h2>
                 <p>{post.description}</p>
                   
 

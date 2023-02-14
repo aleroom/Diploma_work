@@ -110,13 +110,9 @@ const postsSlice = createSlice({
         }
       })
     },
-
     addFavorite: (state, action) => {
       state.favorite.push(action.payload)
-      
     },
-
-
     // addFavorite: (state, action) => {
     //   const post = action.payload;
     //   state.favorite = [...state.favorite, post];
@@ -126,6 +122,9 @@ const postsSlice = createSlice({
         (item) => item.id !== action.payload
       );
     },
+    openPost: (state, action) => {
+      
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPostById.fulfilled, (state, action) => {

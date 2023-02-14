@@ -8,7 +8,6 @@ import { setLikes, setDislikes } from "../../appSlices/index.js";
 const BlogContent = () => { 
     // const dispatch = useDispatch()
     const posts = useSelector((state)=> state.rootReducer.postsReducer.posts)
-        
     
     return (
         
@@ -18,8 +17,7 @@ const BlogContent = () => {
                 <div className={style.posts} key={index} >
                     <BlogCard post={posts} />
                 </div>
-                
-                ))
+            ))
             ) : (
                 <span className={style.pending}>Wait</span>
             )}
