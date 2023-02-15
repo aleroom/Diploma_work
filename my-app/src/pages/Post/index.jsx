@@ -23,15 +23,15 @@ const Post = () => {
                     console.log(item)
                     return (
                         <div className={style.postWrap}>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
+                            <h2 className={style.postTitle}>{item.title}</h2>
+                            <p className={style.postDescription}>{item.description}</p>
                             <div>
                                 <img src={item.image} alt="" />
                             </div>
-                            <p>{item.text}</p>
+                            <p className={style.postText}>{item.text}</p>
                             <div className={style.nav}>
-                                <button><FontAwesomeIcon icon={faArrowLeft} /></button>
-                                <button><FontAwesomeIcon icon={faArrowRight} /></button>
+                                <button>Last<FontAwesomeIcon icon={faArrowLeft} /></button>
+                                <button><FontAwesomeIcon icon={faArrowRight} />Next</button>
                             </div>
                         </div>    
                     )

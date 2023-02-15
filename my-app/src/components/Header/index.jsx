@@ -1,7 +1,7 @@
 import style from "./header.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
-import {useState} from "react";
+
 // import Navigation from "../Navigation";
 // import { ThemeContext } from "../../App";
 
@@ -25,17 +25,18 @@ const Header = () => {
                     placeholder="search"
                      />
                 
-                
-                </div>
-                
-                <div className={style.search_logo}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </div>
+                    <div className={style.search_logo}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </div>
+                </div>    
 
                 
-                <div className="createPost">Create post </div>             
-                
-                <div className={style.header_author}>SignIn</div>
+                <div className="createPost">Create post </div> 
+
+                <div className={style.headerNav}>
+                    <div className={style.headerRegistr}>Registration</div>
+                    <div className={style.header_author}>SignIn</div>
+                </div>    
             </div>
 
         </se>

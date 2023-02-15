@@ -113,18 +113,21 @@ const postsSlice = createSlice({
     addFavorite: (state, action) => {
       state.favorite.push(action.payload)
     },
-    // addFavorite: (state, action) => {
-    //   const post = action.payload;
-    //   state.favorite = [...state.favorite, post];
-    // },
-    delitemarksFavorite: (state, action) => {
+    
+    deliteFavorite: (state, action) => {
       state.favorite = state.favorite.filter(
         (item) => item.id !== action.payload
       );
     },
-    openPost: (state, action) => {
-      
+    clickNextPost: (state, action) => {
+      state.posts.map (item => {
+        if (item.id == action.payload){
+          return ({item,})
+        }
+      })
     }
+
+
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPostById.fulfilled, (state, action) => {

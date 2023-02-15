@@ -11,7 +11,7 @@ const initialState = {
     tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
     posts: [],
     theme: 'light',
-    Favourite: [],
+    
   };
 
 export const themeSlice = createSlice({

@@ -8,8 +8,20 @@ import Favorites from './pages/Favorites';
 import Articles from './pages/Articles';
 import Post from './pages/Post';
 
-function App() {
+// import {useSelector, useDispatch} from 'react-redux';
+// import { swichTheme } from './appSlices/theme';
 
+function App() {
+  // const currentTheme = useSelector((state) => state.rootReducer.themeSlice.reducer.theme)
+  // const dispatch = useDispatch();
+  // const changeTheme = () => {
+  //   dispatch(swichTheme());
+  // };
+
+  // const handleActiveLink = (linkStatus, theme) => {
+  //   return linkStatus.isActive ? `${styles.link} ${styles[theme]}` : `${styles.link}`
+  // }
+  
   return (
     
     <Routes>
