@@ -49,8 +49,7 @@ export const login = createAsyncThunk(
             "Content-Type": "application/json",
           },
           body: JSON.stringify(user),
-        }
-      );
+        });
       if (!response.ok) {
         throw new Error("Server Error 1");
       }
@@ -63,12 +62,32 @@ export const login = createAsyncThunk(
   }
 );
 
+export const userSlice = createSlice({
+  name: "user",
+  initialState: {
+    user: "User is not logged in",
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(login.pending, (state, action) => {
+      state.user = "Loading...";
+    });
+    builder.addCase(login.rejected, (state, action) => {
+      state.user = "Error";
+    });
+  },
+});
+
 const initialState = {
   menu: { articles: "Articles", news: "News", favorites: "Favorites" },
   posts: [],
   theme: 'light',
   favorite: [],
-  value: 0
+  value: 0,
+  user: ""
 };
 
 // export const themeSlice = createSlice({
@@ -142,29 +161,14 @@ const postsSlice = createSlice({
   },
 });
 
-export const userSlice = createSlice({
-  name: "user",
-  initialState: {
-    user: "User is not logged in",
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.user = action.payload;
-    });
-    builder.addCase(login.pending, (state, action) => {
-      state.user = "Loading...";
-    });
-    builder.addCase(login.rejected, (state, action) => {
-      state.user = "Error";
-    });
-  },
-});
+
 
 export const { setPosts, addFavorite, delitemarksFavorites, setLikes, setDislikes, increment, decrement } =
   postsSlice.actions;
 
 
 export default postsSlice.reducer;
+
+
 
 // export const { reducer } = userSlice;
