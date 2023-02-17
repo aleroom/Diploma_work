@@ -35,51 +35,7 @@ export const fetchPostById = createAsyncThunk( //грубо говоря фун�
   }
 );
 
-export const login = createAsyncThunk(
-  "user/login", // имя
-  async (user, thunkAPI) => {
-    //функция котрая делает запрос
-    try {
-      const response = await fetch(
-        `https://studapi.teachmeskills.by/auth/jwt/create/`,
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        });
-      if (!response.ok) {
-        throw new Error("Server Error 1");
-      }
 
-      const json = await response.json();
-      return json;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const userSlice = createSlice({
-  name: "user",
-  initialState: {
-    user: "User is not logged in",
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.user = action.payload;
-    });
-    builder.addCase(login.pending, (state, action) => {
-      state.user = "Loading...";
-    });
-    builder.addCase(login.rejected, (state, action) => {
-      state.user = "Error";
-    });
-  },
-});
 
 const initialState = {
   menu: { articles: "Articles", news: "News", favorites: "Favorites" },
@@ -119,6 +75,7 @@ const postsSlice = createSlice({
         }
       }
       )
+      
     },
     setDislikes: (state, action) => {
       state.posts.map(item => {
@@ -128,6 +85,7 @@ const postsSlice = createSlice({
           return({...item})
         }
       })
+      localStorage.setItem('posts', JSON.stringify(state.posts))
     },
     addFavorite: (state, action) => {
       state.favorite.push(action.payload)
@@ -158,8 +116,10 @@ const postsSlice = createSlice({
     builder.addCase(fetchPostById.rejected, (state, action) => {
       state.posts = "Error";
     });
+    
   },
 });
+
 
 
 
