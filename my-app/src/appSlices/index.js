@@ -1,13 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-//NTcxNA - uid
-//bhke4k-90be0d5193a11e32138da77f3185ab9b - token
-// export const fetchPostById = createAsyncThunk("theme/PostById", async () => {
-//   const response = await fetch("https://jsonplaceholder.typicode.com/posts/1") // как второй then раскрыли промис, при первом раскрытии мы получакм еще один промис, await аналогичен первому then,вместо 2 then можно 2 await это аналогично
-//     //const response = await fetch('https://jsonplaceholder.typicode.com/posts/1')
-//     //const json = await response.json()
-//     .then((response) => response.json());
-//   return response;
-// });
+
 
 export const fetchPostById = createAsyncThunk( //грубо говоря функция асинхронные функции обрабатывает
   "posts/PostId", // имя
@@ -46,15 +38,15 @@ const initialState = {
   user: ""
 };
 
-// export const themeSlice = createSlice({
-//   name: "theme",
-//   initialState,
-//   reducers: {
-//     swichTheme: (state) => {
-//       state.theme === 'light' ? state.theme = 'dark' : state.theme = 'light'
-//     }
-//   }
-// });
+export const themeSlice = createSlice({
+  name: "theme",
+  initialState,
+  reducers: {
+    swichTheme: (state) => {
+      state.theme === 'light' ? state.theme = 'dark' : state.theme = 'light'
+    }
+  }
+});
 
 const postsSlice = createSlice({
   name: "posts",

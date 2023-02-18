@@ -34,7 +34,6 @@ const Header = () => {
                 <div className="createPost">Create post </div> 
 
                 <div className={style.headerNav}>
-                    <div className={style.headerRegistr}>Registration</div>
                     <div className={style.header_author}>SignIn</div>
                 </div>    
             </div>

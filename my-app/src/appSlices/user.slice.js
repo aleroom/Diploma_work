@@ -33,14 +33,42 @@ export const login = createAsyncThunk(
   );
   
   
+  export const isLogin = createAsyncThunk(
+    "user/isLogin",
+    async (accessToken, thunkAPI) => {
+      try {
+        const response = await fetch(
+          `https://studapi.teachmeskills.by/auth/users/me/`,
+          {
+            method: "GET",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${JSON.stringify(accessToken)}`,
+            },
+          }
+        );
+  
+        if (response.ok === false) {
+          throw new Error("Server Error isLogin");
+        }
+  
+        const json = await response.json();
+        state.username = json.username;
+      } catch (err) {
+        return thunkAPI.rejectWithValue(err.message);
+      }
+    }
+  );
+
   
   
-  export const verify = createAsyncThunk(
-    "user/verify", // имя
+  export const refresh = createAsyncThunk(
+    "user/refresh", // имя
     async (token, thunkAPI) => {
         try {
         const response = await fetch(
-          `https://studapi.teachmeskills.by/auth/jwt/verify/`,
+          `https://studapi.teachmeskills.by/auth/jwt/refresh/`,
           {
             method: "POST",
             mode: "cors",
@@ -67,9 +95,7 @@ export const login = createAsyncThunk(
   
   export const userSlice = createSlice({
     name: "user",
-    initialState: {
-      user: "User is not logged in",
-    },
+    initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
         // builder.addCase(createUser.fulfilled, (state, action) => {
@@ -78,14 +104,14 @@ export const login = createAsyncThunk(
         // builder.addCase(createUser.pending, (state, action) => {
         //     state.post = " ";
         //   });
-         // builder.addCase(createUser.rejected, (state, action) => {
+        //  builder.addCase(createUser.rejected, (state, action) => {
         //     state.user = action.payload;
         //   });
 
-         // builder.addCase(activateUser.fulfilled, (state, action) => {
+        //  builder.addCase(activateUser.fulfilled, (state, action) => {
         //     state.user = action.payload;
         //   });
-         // builder.addCase(activateUser.pejected, (state, action) => {
+        //  builder.addCase(activateUser.pejected, (state, action) => {
         //     state.user = action.payload;
         //   });
 
@@ -99,26 +125,34 @@ export const login = createAsyncThunk(
             state.user = "Error";
         });
     
-        builder.addCase(verify.fulfilled, (state, action) => {
-            state.accessToken = action.payload?.access
-            const user = JSON.parse(localStorage.getItem('user'))
-            user.access = state.accessToken
-            localStorage.getItem('user', user)
-            console.log(state.accessToken)
-            console.log(JSON.parse(localStorage.getItem('user')))
-            // localStorage.setItem('user', JSON.stringify(state.user))
+        builder.addCase(refresh.fulfilled, (state, action) => {
+            state.accessToken = action.payload.access;
+            const user = JSON.parse(localStorage.getItem('user'));
+            user.access = state.accessToken;
+            // console.log(JSON.stringify(user))
+            localStorage.setItem('user', JSON.stringify(user));
 
-            if(state.accessToken) {
-            state.isLogedIn = true
-            } else {
-            state.isLogedIn = false
-            }
-        })
+            // if(state.accessToken) {
+            // state.isLogedIn = true
+            // } else {
+            // state.isLogedIn = false
+            // }
+        });
     
-        builder.addCase(verify.rejected, (state, action) => {
+        builder.addCase(refresh.rejected, (state, action) => {
             state.accessToken = "";
             state.isLogedIn = false
-            
-        })
+        });
+        builder.addCase(isLogin.fulfilled, (state, action) => {
+          state.accessToken = action.payload.access;
+        });
+        builder.addCase(isLogin.pending, (state, action) => {
+          // state.accessToken = "pending...";
+        });
+        builder.addCase(isLogin.rejected, (state, action) => {
+          console.log(action.payload);
+        });
         },
     });
+
+    export default userSlice.reducer;
