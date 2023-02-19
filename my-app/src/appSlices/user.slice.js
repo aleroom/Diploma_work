@@ -37,6 +37,7 @@ export const login = createAsyncThunk(
     "user/isLogin",
     async (accessToken, thunkAPI) => {
       try {
+          console.log(JSON.stringify(accessToken))
         const response = await fetch(
           `https://studapi.teachmeskills.by/auth/users/me/`,
           {
@@ -44,7 +45,7 @@ export const login = createAsyncThunk(
             mode: "cors",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${JSON.stringify(accessToken)}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -54,7 +55,7 @@ export const login = createAsyncThunk(
         }
   
         const json = await response.json();
-        state.username = json.username;
+        return json
       } catch (err) {
         return thunkAPI.rejectWithValue(err.message);
       }
@@ -117,6 +118,7 @@ export const login = createAsyncThunk(
 
         builder.addCase(login.fulfilled, (state, action) => {
             state.user = action.payload;
+            state.accessToken = action.payload.access
         });
         builder.addCase(login.pending, (state, action) => {
             state.user = "Loading...";
@@ -144,7 +146,11 @@ export const login = createAsyncThunk(
             state.isLogedIn = false
         });
         builder.addCase(isLogin.fulfilled, (state, action) => {
-          state.accessToken = action.payload.access;
+          state.accessToken = JSON.stringify(action.payload.access);
+          state.isLogedIn = true
+          state.user.username = action.payload.username
+          // state.user.email = action.payload.email
+
         });
         builder.addCase(isLogin.pending, (state, action) => {
           // state.accessToken = "pending...";

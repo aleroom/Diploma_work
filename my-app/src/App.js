@@ -5,10 +5,11 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import News from "./pages/News";
 import Favorites from './pages/Favorites';
-import Articles from './pages/Articles';
 import Post from './pages/Post';
 import { refresh} from "./appSlices/user.slice";
-import Login from './components/SignIn';
+
+import ModalSignIn from './pages/ModalPageSignIn';
+import AllPosts from './pages/Articles';
 
 // import { swichTheme } from './appSlices/theme';
 
@@ -44,13 +45,13 @@ function App() {
     
 
 <> 
-<Login/>
+
     <Routes>
       <Route path='/' element={<Home />}/>
-      <Route path="/articles" element={<Articles />} /> 
-      <Route path="/news" element={<News />} /> 
+      <Route path="/allPosts" element={<AllPosts />} /> 
       <Route path="/favorites" element={<Favorites />} /> 
       <Route path="/post/:id" element={<Post />} />
+     
     </Routes> 
    
     </>

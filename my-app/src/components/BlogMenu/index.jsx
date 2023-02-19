@@ -10,24 +10,28 @@ const BlogMenu = () => {
     return (
         <div className={style.menuContainer}>
             <div className={style.menuNav}>  
-                
+            <div className={style.navSite}>  
                 <div className={style.menuArticles}>
-                    <NavLink to="/articles" className={({isActive}) => (isActive ? style.active : "")}>
-                        {menu.articles}
+                    <NavLink to="/allPosts">
+                        {menu.allPosts}
                     </NavLink>
                 </div>
                 
-                <div className={style.menuNews}>
-                    <NavLink to="/news" className={({isActive}) => (isActive ? style.active : "")}>
-                        {menu.news}
-                    </NavLink>    
-                </div>
-
                 <div className={style.menuFav}>
-                <NavLink to="/favorites" className={({isActive}) => (isActive ? style.active : "")}>
+                <NavLink to="/favorites" >
                         {menu.favorites}
                 </NavLink>    
                 </div>
+            </div> 
+
+                <div className={style.socialNetworks}>
+                    <a href="https://www.instagram.com/artforintrovert_russia/" className={style.inst}><img src="https://say-hi.me/wp-content/uploads/2016/05/novyi-logotip-instagram1.jpg" alt="" /></a>
+                    
+                    <a href="https://online.artforintrovert.ru/" className={style.site}><img src="https://static.tildacdn.com/tild3733-3439-4138-b035-643537353037/Frame_19.svg" alt="" /></a>
+
+                    
+                </div>            
+                
             </div>  
 
              

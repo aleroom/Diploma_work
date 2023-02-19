@@ -1,3 +1,4 @@
+import style from "./signIn.module.css";
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { login, isLogin } from "../../appSlices/user.slice";
@@ -24,6 +25,8 @@ function Login() {
   
   };
 
+
+
   useEffect(()=>{
     if(tokenStatus){
       handleIsLogin()
@@ -34,30 +37,33 @@ function Login() {
 
 
   return (
-    <>
+    <div className={style.signInContainer}>
       <h3>{JSON.stringify(userStatus)}</h3>
-      <form onSubmit = {handleLogin}>
-          <input
-            type={"email"}
-            required
-            placeholder={"Email"}
-            value={email}
-            onChange = {(e) => setEmail(e.target.value)}
-          />
+      <h2 className={style.signInDescr}>Welcome to MYBLOG</h2>
+        <div className={style.signInWrap}>
+          <form onSubmit = {handleLogin}>
+              <input
+                type={"email"}
+                required
+                placeholder={"Email"}
+                value={email}
+                onChange = {(e) => setEmail(e.target.value)}
+              />
 
-          
-          <input
-            type={"password"}
-            placeholder={"Password"}
-            value={password}
-            required
-            onChange = {(e) => setPassword(e.target.value)}
-          />
-          
-          <input type="submit" value="Submit" />
-          <br />
-    </form>
-  </>
+              <input
+                type={"password"}
+                placeholder={"Password"}
+                value={password}
+                required
+                onChange = {(e) => setPassword(e.target.value)}
+              />
+              <div className={style.signInSubmit}>
+                <input type="submit" value="Submit" />
+              </div>
+              <br />
+        </form>
+      </div>
+  </div>
   )
 }
 

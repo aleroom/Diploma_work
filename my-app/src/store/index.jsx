@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"; //станд
 
 import postsSlice from "../appSlices/index.js";
 import themeSlice from "../appSlices/theme.js";
-import { userSlice } from "../appSlices/user.slice"
+import { userSlice } from "../appSlices/user.slice";
 
 
 

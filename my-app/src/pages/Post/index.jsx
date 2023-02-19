@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Layout from '../../components/Layout';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const Post = () => {
@@ -29,6 +30,7 @@ const Post = () => {
                                 <img src={item.image} alt="" />
                             </div>
                             <p>{item.text}</p>
+                            
                             <div className={style.navPost}>
                                 <button><FontAwesomeIcon icon={faArrowLeft} /></button>
                                 <button><FontAwesomeIcon icon={faArrowRight} /></button>

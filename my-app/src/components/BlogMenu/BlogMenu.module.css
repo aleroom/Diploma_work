@@ -8,7 +8,12 @@
 }
 .menuNav {
     display: flex;
+    justify-content: space-between;
+}
+.navSite {
+    display: flex;
     justify-content: left;
+    max-width: 1170px;
     
 }
 
@@ -22,9 +27,25 @@
     padding: 5px 10px;
 }
 
-.menuArticles a, .menuFav a, .menuNews a {
+.menuArticles a, .menuFav a {
     color: black;
     text-decoration: none;
     
 }
+.socialNetworks {
+    display: flex;
+    justify-content: right;
+}
+
+.socialNetworks a, img{
+    width: 55px;
+    height: 27px;
+    
+  }
+ 
+.inst, .site, .youTube {
+    margin-right: 20px;
+    padding: 10px;
+    text-decoration: none;
+  }
 
