@@ -1,14 +1,14 @@
 import BlogCard from "../BlogCard";
 import React, {useEffect, useState} from "react";
 import style from "./blogContent.module.css"
-import { useSelector } from "react-redux";
-import { setLikes, setDislikes } from "../../appSlices/index.js";
+import {useAppSelector} from "../../store/hooks";
+import { setLikes, setDislikes } from "../../appSlices";
 
 
 const BlogContent = () => { 
     // const dispatch = useDispatch()
-    const posts = useSelector((state)=> state.rootReducer.postsReducer.posts)
-    const searchedPosts = useSelector(state => state.rootReducer.postsReducer.searchedPosts)
+    const posts = useAppSelector((state)=> state.rootReducer.postsReducer.posts)
+    const searchedPosts = useAppSelector(state => state.rootReducer.postsReducer.searchedPosts)
     
     return (
         

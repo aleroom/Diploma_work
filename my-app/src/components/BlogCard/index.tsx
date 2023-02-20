@@ -4,11 +4,15 @@ import { faHeart, faHeartCrack, faBookmark } from '@fortawesome/free-solid-svg-i
 import { useDispatch } from "react-redux";
 import { setLikes, setDislikes, addFavorite } from "../../appSlices";
 import { NavLink } from "react-router-dom";
+import {PostsState} from "../../appSlices";
+import React from "react";
+
+type BlogCardProp = {
+    post: PostsState
+}
 
 
-
-
-const BlogCard = ({post}) => {
+const BlogCard:React.FC<BlogCardProp> = ({post}) => {
     const dispatch = useDispatch();
     
     return (

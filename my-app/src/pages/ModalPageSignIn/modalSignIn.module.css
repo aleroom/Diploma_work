@@ -10,13 +10,16 @@
     justify-content: center;
     transform: scale(0);
 }
-.modal.active {
+.active {
     transform: scale(1);
 }
 .modalContent {
     padding: 20px;
     border-radius: 12px;
-    background-color: #f9f4af;
+    background-color: rgb(203, 198, 134);
     height: 310px;
     width: 400px;
 }
+label{
+    font-size: 15px;
+} 

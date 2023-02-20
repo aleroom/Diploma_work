@@ -3,7 +3,7 @@
   display: block;
   margin: auto;
   padding: 20px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 } 
 .signInDescr {
   text-align: center;
@@ -20,6 +20,9 @@ input {
 .signInSubmit {
   margin: 0 auto;
   width: 100px;
-  border-radius: 5px;
+  border: 1px solid grey;
+  text-align: center;
+  padding: 5px;
+  
   
 } 

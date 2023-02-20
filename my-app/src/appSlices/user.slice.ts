@@ -1,12 +1,36 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import exp from "constants";
+import {setModal} from "./index";
 
-const initialState = {
-    user: "User is not logged in",
+interface UserTypeFetch  {
+    username: string,
+    id?: number,
+    email: string,
+    error: string
+}
+
+interface UserState<UserTypeFetch> {
+    user: UserTypeFetch,
+    isLogedIn: boolean,
+    accessToken: string
+}
+
+type Login = {
+    password: string,
+    email: string
+}
+
+const initialState:UserState<UserTypeFetch> = {
+    user: {
+        error: "User is not logged in",
+        username: '',
+        email: ''
+    },
     isLogedIn: false,
     accessToken: ""
   }
 
-export const login = createAsyncThunk(
+export const login = createAsyncThunk<any,Login>(
     "user/login", // имя
     async (user, thunkAPI) => {
       //функция котрая делает запрос
@@ -24,16 +48,17 @@ export const login = createAsyncThunk(
         if (!response.ok) {
           throw new Error("Server Error 1");
         }
+        thunkAPI.dispatch(setModal())
         const json = await response.json();
         return json;
-      } catch (error) {
+      } catch (error:any) {
         return thunkAPI.rejectWithValue(error.message);
       }
     }
   );
   
   
-  export const isLogin = createAsyncThunk(
+  export const isLogin = createAsyncThunk<any, string>(
     "user/isLogin",
     async (accessToken, thunkAPI) => {
       try {
@@ -56,7 +81,7 @@ export const login = createAsyncThunk(
   
         const json = await response.json();
         return json
-      } catch (err) {
+      } catch (err:any) {
         return thunkAPI.rejectWithValue(err.message);
       }
     }
@@ -84,7 +109,7 @@ export const login = createAsyncThunk(
         const json = await response.json();
         return json;
       } 
-        catch (error) {
+        catch (error:any) {
         return thunkAPI.rejectWithValue(error.message);
       }
     }
@@ -97,39 +122,26 @@ export const login = createAsyncThunk(
   export const userSlice = createSlice({
     name: "user",
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        logOut: (state) => {
+            state.isLogedIn = !state.isLogedIn
+        }
+    },
     extraReducers: (builder) => {
-        // builder.addCase(createUser.fulfilled, (state, action) => {
-        //     state.user = action.payload;
-        //   });
-        // builder.addCase(createUser.pending, (state, action) => {
-        //     state.post = " ";
-        //   });
-        //  builder.addCase(createUser.rejected, (state, action) => {
-        //     state.user = action.payload;
-        //   });
-
-        //  builder.addCase(activateUser.fulfilled, (state, action) => {
-        //     state.user = action.payload;
-        //   });
-        //  builder.addCase(activateUser.pejected, (state, action) => {
-        //     state.user = action.payload;
-        //   });
-
         builder.addCase(login.fulfilled, (state, action) => {
             state.user = action.payload;
             state.accessToken = action.payload.access
         });
         builder.addCase(login.pending, (state, action) => {
-            state.user = "Loading...";
+            state.user.error = "Loading...";
         });
         builder.addCase(login.rejected, (state, action) => {
-            state.user = "Error";
+            state.user.error = "Error";
         });
     
         builder.addCase(refresh.fulfilled, (state, action) => {
             state.accessToken = action.payload.access;
-            const user = JSON.parse(localStorage.getItem('user'));
+            const user = JSON.parse(localStorage.getItem('user') || '');
             user.access = state.accessToken;
             // console.log(JSON.stringify(user))
             localStorage.setItem('user', JSON.stringify(user));
@@ -148,7 +160,8 @@ export const login = createAsyncThunk(
         builder.addCase(isLogin.fulfilled, (state, action) => {
           state.accessToken = JSON.stringify(action.payload.access);
           state.isLogedIn = true
-          state.user.username = action.payload.username
+          // @ts-ignore
+            state.user.username = action.payload.username
           // state.user.email = action.payload.email
 
         });
@@ -160,5 +173,5 @@ export const login = createAsyncThunk(
         });
         },
     });
-
+    export const {logOut} = userSlice.actions
     export default userSlice.reducer;

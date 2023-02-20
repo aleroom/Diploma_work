@@ -1,12 +1,11 @@
 import BlogCard from "../../components/BlogCard";
 import style from './favorite.module.css';
 import '../../App.css';
-
-import { useSelector } from "react-redux";
+import {useAppSelector} from "../../store/hooks";
 import Layout from "../../components/Layout";
 
 function Favorites() {
-  const favorite = useSelector((state) => state?.rootReducer?.postsReducer.favorite);
+  const favorite = useAppSelector((state) => state?.rootReducer?.postsReducer.favorite);
 
   return (
     <Layout>

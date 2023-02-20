@@ -7,7 +7,7 @@ import News from "./pages/News";
 import Favorites from './pages/Favorites';
 import Post from './pages/Post';
 import { refresh} from "./appSlices/user.slice";
-
+import {useAppDispatch} from "./store/hooks";
 import ModalSignIn from './pages/ModalPageSignIn';
 import AllPosts from './pages/Articles';
 
@@ -28,13 +28,15 @@ function App() {
   // }
 
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const refreshInterval = setInterval(()=> {
       const user = localStorage.getItem("user"); 
         if (user && JSON.parse(user).refresh)
-          dispatch(refresh({refresh: JSON.parse(user).refresh}))
+          { // @ts-ignore
+            dispatch(refresh({refresh: JSON.parse(user).refresh}))
+          }
       }, 300000);
       return () => clearInterval(refreshInterval);
     }, [])

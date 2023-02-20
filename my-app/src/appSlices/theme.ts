@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {PostsState} from "./index";
 
 
 //actionCreator = () => {type: "theme/swichTheme"}
@@ -7,7 +8,19 @@ import { createSlice } from "@reduxjs/toolkit";
 // тайп генерируется из 
 
 
-const initialState = {
+type TabsType ={
+    all: string,
+    myFavorites: string,
+    popular: string
+}
+
+interface ThemeState<TabsType, PostsState> {
+    tabs: TabsType,
+    posts: PostsState[],
+    theme: string
+}
+
+const initialState: ThemeState<TabsType, PostsState> = {
     tabs: { all: "All", myFavorites: "My Favorites", popular: "Popular" },
     posts: [],
     theme: 'light',
@@ -18,13 +31,13 @@ export const themeSlice = createSlice({
     name: "theme",
     initialState,
     reducers: {
-      swichTheme: (state) => {
+      switchTheme: (state) => {
         state.theme === 'light' ? state.theme = 'dark' : state.theme = 'light'
       }
     }
   });
 
 
-  export const { swichTheme } = themeSlice.actions;
+  export const { switchTheme } = themeSlice.actions;
 
   export default themeSlice.reducer

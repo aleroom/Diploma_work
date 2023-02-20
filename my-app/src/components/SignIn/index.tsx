@@ -1,26 +1,27 @@
 import style from "./signIn.module.css";
 import React, {useEffect, useState} from "react";
-import { useDispatch, useSelector} from "react-redux";
 import { login, isLogin } from "../../appSlices/user.slice";
+import {useAppSelector, useAppDispatch} from "../../store/hooks";
 
 function Login() {
-  const userStatus = useSelector((state) => state?.rootReducer?.userReducer?.user);
+  const userStatus = useAppSelector((state) => state?.rootReducer?.userReducer?.user);
   
-  const tokenStatus = useSelector(
+  const tokenStatus = useAppSelector(
     (state) => state?.rootReducer?.userReducer?.accessToken
   );
+  const modalActive = useAppSelector(state => state.rootReducer.postsReducer.modalActive)
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = (e:React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(login({email, password}))
   }
 
-  const handleIsLogin = (e) => {
+  const handleIsLogin = () => {
     dispatch(isLogin(tokenStatus));
   
   };
@@ -38,7 +39,7 @@ function Login() {
 
   return (
     <div className={style.signInContainer}>
-      <h3>{JSON.stringify(userStatus)}</h3>
+      {/*<h3>{JSON.stringify(userStatus)}</h3>*/}
       <h2 className={style.signInDescr}>Welcome to MYBLOG</h2>
         <div className={style.signInWrap}>
           <form onSubmit = {handleLogin}>
@@ -58,7 +59,7 @@ function Login() {
                 onChange = {(e) => setPassword(e.target.value)}
               />
               <div className={style.signInSubmit}>
-                <input type="submit" value="Submit" />
+                <button type="submit">Sumbit</button>
               </div>
               <br />
         </form>

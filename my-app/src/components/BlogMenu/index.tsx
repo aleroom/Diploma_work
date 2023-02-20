@@ -1,12 +1,12 @@
 import style from "./BlogMenu.module.css";
 
-// import { ThemeContext } from "../../../App.js";
-import { useSelector } from "react-redux";
+// import { ThemeContext } from "../../../App.tsx";
+import {useAppSelector} from "../../store/hooks";
 import { NavLink } from "react-router-dom";
 
 
 const BlogMenu = () => {
-    const menu = useSelector((state) => state.rootReducer.postsReducer.menu);
+    const menu = useAppSelector((state) => state.rootReducer.postsReducer.menu);
     return (
         <div className={style.menuContainer}>
             <div className={style.menuNav}>  
